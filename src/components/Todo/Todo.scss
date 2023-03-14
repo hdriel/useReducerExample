@@ -11,6 +11,7 @@ form {
     border-right: none;
     background: $backgroundInput;
     padding: 3px 0px 3px 10px;
+    border-radius: 8px 0 0 8px;
     &:focus {
       outline: none;
     }
