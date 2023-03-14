@@ -7,7 +7,9 @@
     "start": "webpack serve --config webpack.config.js",
     "build": "webpack --config webpack.config.js",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "repository": {
     "type": "git",
