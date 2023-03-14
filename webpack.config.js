@@ -3,54 +3,40 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   mode: "development",
-  entry: "./src/index.js",
+  devtool: "inline-source-map",
+  entry: "./src/index.jsx",
   output: {
-    filename: "main.js",
-    path: path.resolve(__dirname, "dist"),
-    clean: true,
-    assetModuleFilename: "[name][ext]",
+    path: path.join(__dirname, "/dist"), // the bundle output path
+    filename: "[name].[hash:8].js",
+    sourceMapFilename: "[name].[hash:8].map",
+    chunkFilename: "[id].[hash:8].js",
   },
-  devtool: "source-map",
-  devServer: {
-    static: {
-      directory: path.resolve(__dirname, "dist"),
-    },
-    port: 3000,
-    open: true,
-    hot: true,
-    compress: true,
-    historyApiFallback: true,
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: "Development",
+      template: "src/index.html", // to import index.html file inside index.js
+    }),
+  ],
+  devServer: { port: 3030 },
+  resolve: {
+    extensions: ["*", ".js", ".jsx"],
   },
   module: {
     rules: [
       {
-        test: /\.(scss|css|less)$/i,
-        use: [
-          { loader: "style-loader" },
-          { loader: "css-loader" },
-          { loader: "sass-loader" },
-        ],
-        include: [path.join(__dirname, "src")],
+        test: /\.(js|jsx)$/i, // .js and .jsx files
+        exclude: /node_modules/, // excluding the node_modules folder
+        use: { loader: "babel-loader" },
       },
       {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: ["babel-loader"],
+        test: /\.(sa|sc|c)ss$/i, // styles files
+        use: ["style-loader", "css-loader", "sass-loader"],
       },
       {
-        test: /\.(png|svg|jpeg|jpg|png|gif)$/i,
-        type: "asset/resource",
+        test: /\.(png|woff|woff2|eot|ttf|svg)$/i, // to import images and fonts
+        loader: "url-loader",
+        options: { limit: false },
       },
     ],
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: "Dye-Symbols",
-      filename: "index.html",
-      template: "src/template.html",
-    }),
-  ],
-  resolve: {
-    extensions: ["*", ".js", ".jsx"],
   },
 };

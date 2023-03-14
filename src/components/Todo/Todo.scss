@@ -1,0 +1,110 @@
+$backgroundInput: rgba(17, 1, 16, 0.04);
+
+form {
+  display: flex;
+  align-items: center;
+  height: 18px;
+
+  input {
+    height: inherit;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-right: none;
+    background: $backgroundInput;
+    padding: 3px 0px 3px 10px;
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.submit {
+  border-radius: 0 8px 8px 0;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-left: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: inherit;
+  padding: 12px 10px;
+  background: $backgroundInput;
+}
+
+.list {
+  padding: 0;
+}
+
+.item {
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: inherit;
+  border: 1px solid rgba(0, 0, 0, 0.17);
+
+  .title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &:nth-child(even) {
+    background-color: rgba(4, 42, 122, 0.82);
+    color: white;
+  }
+
+  &:hover {
+    background-color: rgba(35, 103, 90, 0.5);
+    color: white;
+  }
+
+  &:first-child {
+    border-radius: 8px 8px 0 0;
+  }
+
+  &:last-child {
+    border-radius: 0 0 8px 8px;
+  }
+}
+
+.delete {
+  cursor: pointer;
+}
+
+.item:has(.delete:hover) {
+  background: rgba(255, 0, 0, 0.36);
+  .delete {
+    fill: black;
+  }
+}
+
+.tooltip {
+  display: inline;
+  position: relative;
+
+  &:hover {
+    &:after {
+      background: #333;
+      background: rgba(0, 0, 0, 0.8);
+      border-radius: 5px;
+      bottom: -32px;
+      color: #fff;
+      content: attr(data-tip);
+      right: -10px;
+      padding: 5px 15px;
+      position: absolute;
+      z-index: 98;
+      width: max-content;
+    }
+
+    &:before {
+      border: solid;
+      border-color: #333 transparent;
+      border-width: 0 6px 6px 6px;
+      bottom: -4px;
+      content: "";
+      left: 50%;
+      position: absolute;
+      z-index: 99;
+    }
+  }
+}

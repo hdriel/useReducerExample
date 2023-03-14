@@ -1,8 +1,13 @@
 import React from "react";
-import { Text } from "./base-components";
+import { Todo } from "./components";
 
 function App() {
-  return <Text label={"hola text"}></Text>;
+  return (
+    <div>
+      <p>useReducer Example</p>
+      <Todo />
+    </div>
+  );
 }
 
 export default App;
