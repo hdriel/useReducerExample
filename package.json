@@ -9,18 +9,18 @@
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "npm run predeploy && gh-pages -d dist"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/afekTheMiniLearner/dye-symbols.git"
+    "url": "git+https://github.com/hdriel/useReducerExample.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/afekTheMiniLearner/dye-symbols/issues"
+    "url": "https://github.com/hdriel/useReducerExample/issues"
   },
-  "homepage": "https://github.com/afekTheMiniLearner/dye-symbols#readme",
+  "homepage": "https://github.com/hdriel/useReducerExample#readme",
   "devDependencies": {
     "@babel/core": "^7.21.0",
     "@babel/preset-env": "^7.20.2",
@@ -35,7 +35,7 @@
     "@storybook/testing-library": "^0.0.13",
     "babel-loader": "^9.1.2",
     "css-loader": "^6.7.3",
-    "gh-pages": "^3.2.0",
+    "gh-pages": "^5.0.0",
     "html-webpack-plugin": "^5.5.0",
     "prettier": "^2.8.4",
     "sass": "^1.58.3",
